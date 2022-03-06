@@ -11,15 +11,14 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="test-kitFlow" doc:id="7f9286be-ccd2-42a9-8c91-518ca18453bc" >
 		<http:listener doc:name="Listener" doc:id="cd687745-eba8-445b-985b-c0ad894cad38" config-ref="HTTP_Listener_config" path="/test"/>
 		<set-payload value="integration flow invoked" doc:name="Set Payload" doc:id="e9db896b-add2-4299-b5dc-a73eb982a9a3" />
+		<set-variable value="#[payload]" doc:name="Set Variable" doc:id="a4fd739f-1f00-4c28-b924-9dccc9520df7" variableName="mydata"/>
 		<logger level="INFO" doc:name="Logger" doc:id="6dda6473-019b-4889-a4ac-cfca83689dfa" message='"integration sucessfull"'/>
-		<ee:transform doc:name="Transform Message" doc:id="d6f7b6e5-a0b1-409d-8869-f5c9d16fb3be" >
+		<ee:transform doc:name="Transform Message" doc:id="2d0c6711-a425-4721-81f6-e1489722b179" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-{
-	"message" : "integration successfull" 
-}]]></ee:set-payload>
+payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
